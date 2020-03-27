@@ -1,18 +1,34 @@
 // You can import from local files
- import { createAppContainer } from '@react-navigation/native';
-  import { createStackNavigator } from '@react-navigation/stack';
-  import GlobalSearchComponent from './Screens/GSearch/GlobalSearchComponent';
+import React from 'react';
+import { Provider } from "react-redux";
+//  import { createAppContainer } from '@react-navigation/native';
+//  import { createStackNavigator } from '@react-navigation/stack';
+ import GlobalSearchComponent from './Screens/GSearch';
+ import store from './Screens/GSearch/State/store';
 
-const AppNavigator = createStackNavigator({
-  GlobalSearch: {
-        screen: GlobalSearchComponent,
-        navigationOptions: {
-            header: null,
-        }
-    },
-    },
-    {
-        initialRouteName: "GlobalSearch"
-    });
+// const AppNavigator = createStackNavigator({
+//   GlobalSearch: {
+//         screen: GlobalSearchComponent,
+//         navigationOptions: {
+//             header: null,
+//         }
+//     },
+//     },
+//     {
+//         initialRouteName: "GlobalSearch"
+//     });
 
-export default createAppContainer(AppNavigator);
+
+
+
+class App extends React.Component{
+    
+    render(){
+        return(
+            <Provider store={store}>
+                <GlobalSearchComponent />
+            </Provider>
+        )
+    }
+}
+export default App; //createAppContainer(AppNavigator);
