@@ -6,7 +6,7 @@ const mapStateToProps = (state /* , props */) => (
     {
         suggestions:state.SuggestionsReducer,
         searchResult: state.SearchReducer
-  
+      
     }
   );
   

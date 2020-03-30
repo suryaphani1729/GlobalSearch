@@ -8,6 +8,7 @@ export default class GlobalSearchComponent extends Component {
    this.state = {searchText: "", suggestions: props.suggestions.suggestion,
                 searchResult: [],
                 showSuggestions: false,
+                filterKeys: ["All"]
   }; 
 
  }
@@ -18,10 +19,12 @@ export default class GlobalSearchComponent extends Component {
    this.onSearchSubmit();
  }
  onSearchSubmit = () => {
-   this.setState({showSuggestions: false,searchResult: this.props.searchResult});
+   this.setState({showSuggestions: false,searchResult: this.props.searchResult, filterKeys:[...Object.keys(this.props.searchResult)]});
+   //alert(JSON.stringify(["All",...Object.keys(this.props.searchResult)]));
  }
   render() {
-    const {searchText, searchResult, suggestions, showSuggestions} = this.state;
+    const {searchText, searchResult, suggestions, showSuggestions, filterKeys} = this.state;
+    alert(JSON.stringify(searchResult));
     return (
       <KeyboardAvoidingView
       behavior={Platform.Os == "ios" ? "padding" : "height"}
@@ -47,10 +50,17 @@ export default class GlobalSearchComponent extends Component {
             }
 
             {
-              searchResult.map(item =>  <View>
-                <Text>{item.title}</Text>
-                <Text>{item.desc}</Text>
-            </View>)
+               filterKeys.length>0 &&  filterKeys.map(key => {
+
+               return searchResult[key] && searchResult[key].map(item =>  <View>
+                  <Text>{item.pageTitle}</Text>
+               <Text>{item['description'] && item.description}</Text>
+              </View>)
+
+
+
+              })
+             
             }
            
       </View>
