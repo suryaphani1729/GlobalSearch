@@ -1,22 +1,23 @@
  import { connect } from "react-redux";
 import GlobalSearchComponent from './GlobalSearchComponent';
-import {suggestionActions} from './State/SuggestionsActions';
+import {getSuggestionAction} from './State/SuggestionsActions';
+import {SearchActions} from './State/SearchActions';
+
 
 const mapStateToProps = (state /* , props */) => (
     {
-        suggestions:state.SuggestionsReducer,
+        suggestions: state.SuggestionsReducer,
         searchResult: state.SearchReducer
       
     }
   );
-  console.log("******");
 
 
   const mapDispatchToProps = {
-    suggestionActions
+    getSuggestionAction,
+    SearchActions,
   };
 
-  console.log(suggestionActions,mapDispatchToProps);
 
 
   export default connect(

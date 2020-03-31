@@ -1,8 +1,9 @@
-const initSuggestions= {"suggestion":["product","products","productsamplepage1","productsamplepage10"]};
+const initSuggestions= {"suggestion":[]};
 
 
     function SuggestionsReducer(state = initSuggestions, action) {
         switch (action.type) {
+            case "GET_SUGGESTIONS": return {...action.payload}; break;
             default:
                 return state;
         }

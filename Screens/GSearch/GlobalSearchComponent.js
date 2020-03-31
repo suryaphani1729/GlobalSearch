@@ -5,7 +5,7 @@ import styles from './Styles';
 export default class GlobalSearchComponent extends Component {
  constructor(props){
    super(props);
-   this.state = {searchText: "", suggestions: props.suggestions.suggestion,
+   this.state = {searchText: "", suggestions: [],
                 searchResult: [],
                 showSuggestions: false,
                 filterKeys: ["All"]
@@ -13,21 +13,37 @@ export default class GlobalSearchComponent extends Component {
 
  }
  
- onSearchTextChange = searchText => this.setState({searchText, showSuggestions: searchText.length>=3});
+ onSearchTextChange = searchText => {
+  const {getSuggestionAction} = this.props;
+  if(searchText.length>=3){
+    getSuggestionAction(searchText);
+    this.setState({searchText, showSuggestions: searchText.length>=3});
+  }
+  else{
+    this.setState({searchText});
+  }
+  
+ } 
  onSuggestionSelect = selectedText => {
    this.setState({showSuggestions:false,searchText:selectedText});
    this.onSearchSubmit();
  }
  onSearchSubmit = () => {
-   this.setState({showSuggestions: false,searchResult: this.props.searchResult, filterKeys:[...Object.keys(this.props.searchResult)]});
-   //alert(JSON.stringify(this.props));
-   const {suggestionActions} = this.props;
-   console.log(suggestionActions());
+
+  const {SearchActions} = this.props;
+  const {searchText} = this.state;
+
+   SearchActions(searchText);
+
+   this.setState({showSuggestions: false});
+
  }
   render() {
-    const {searchText, searchResult, suggestions, showSuggestions, filterKeys} = this.state;
+    const {searchText, showSuggestions} = this.state;
+    const {suggestions,searchResult} = this.props;
+    const filterKeys = Object.keys(searchResult);
     
-
+    console.log("render",this.props);
     
     return (
       <KeyboardAvoidingView
@@ -47,7 +63,7 @@ export default class GlobalSearchComponent extends Component {
             showSuggestions ? 
            <View style={styles.suggestionView}>
              {
-               suggestions.map((item)=><TouchableOpacity onPress={()=>this.onSuggestionSelect(item)}><Text key={item} style={styles.suggestionText}>{item}</Text></TouchableOpacity>)
+               suggestions.suggestion.map((item)=><TouchableOpacity onPress={()=>this.onSuggestionSelect(item)}><Text key={item} style={styles.suggestionText}>{item}</Text></TouchableOpacity>)
              }
 
            </View> : null

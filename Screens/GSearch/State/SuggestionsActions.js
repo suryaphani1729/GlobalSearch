@@ -1,7 +1,14 @@
-export const suggestionActions = (data) => (dispatch) => {
-     console.log("Action::: AmmendData ::: >>>", data);
+const initSuggestions= {"suggestion":["product","products","productsamplepage1","productsamplepage10"]};
+
+getSuggestions = searchKey =>{
+   
+   return initSuggestions;
+}
+
+export const getSuggestionAction = (searchKey) => (dispatch) => {
+    const data = getSuggestions(searchKey);
     dispatch({
         type: "GET_SUGGESTIONS",
-        ...data
+        payload: {...data}
     });
 };
