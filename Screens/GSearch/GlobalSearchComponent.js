@@ -20,11 +20,15 @@ export default class GlobalSearchComponent extends Component {
  }
  onSearchSubmit = () => {
    this.setState({showSuggestions: false,searchResult: this.props.searchResult, filterKeys:[...Object.keys(this.props.searchResult)]});
-   //alert(JSON.stringify(["All",...Object.keys(this.props.searchResult)]));
+   //alert(JSON.stringify(this.props));
+   const {suggestionActions} = this.props;
+   console.log(suggestionActions());
  }
   render() {
     const {searchText, searchResult, suggestions, showSuggestions, filterKeys} = this.state;
-    alert(JSON.stringify(searchResult));
+    
+
+    
     return (
       <KeyboardAvoidingView
       behavior={Platform.Os == "ios" ? "padding" : "height"}
