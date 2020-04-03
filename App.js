@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 //  import { createAppContainer } from '@react-navigation/native';
 //  import { createStackNavigator } from '@react-navigation/stack';
  import GlobalSearchComponent from './Screens/GSearch';
+ import GSearchComponent from './Screens/GSearch/GSearchComponent';
+ 
  import store from './Screens/GSearch/State/store';
 
 // const AppNavigator = createStackNavigator({
@@ -31,4 +33,4 @@ class App extends React.Component{
         )
     }
 }
-export default App; //createAppContainer(AppNavigator);
+export default GSearchComponent; //createAppContainer(AppNavigator);
