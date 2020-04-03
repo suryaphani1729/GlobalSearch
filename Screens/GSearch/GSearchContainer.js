@@ -1,4 +1,4 @@
- import { connect } from "react-redux";
+import { connect } from "react-redux";
 import GSearchComponent from './GSearchComponent';
 import {getSuggestionAction} from './State/SuggestionsActions';
 import {SearchActions} from './State/SearchActions';

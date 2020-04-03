@@ -1,3 +1,3 @@
-import GlobalSearchContainer from './GlobalSearchContainer';
+import GSearchContainer from './GSearchContainer';
 
-export default GlobalSearchContainer;
+export default GSearchContainer;

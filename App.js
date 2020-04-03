@@ -3,8 +3,8 @@ import React from 'react';
 import { Provider } from "react-redux";
 //  import { createAppContainer } from '@react-navigation/native';
 //  import { createStackNavigator } from '@react-navigation/stack';
- import GlobalSearchComponent from './Screens/GSearch';
- import GSearchComponent from './Screens/GSearch/GSearchComponent';
+ //import GlobalSearchComponent from './Screens/GSearch';
+ import GSearchComponent from './Screens/GSearch';
  
  import store from './Screens/GSearch/State/store';
 
@@ -28,9 +28,9 @@ class App extends React.Component{
     render(){
         return(
             <Provider store={store}>
-                <GlobalSearchComponent />
+                <GSearchComponent />
             </Provider>
         )
     }
 }
-export default GSearchComponent; //createAppContainer(AppNavigator);
+export default App; //createAppContainer(AppNavigator);

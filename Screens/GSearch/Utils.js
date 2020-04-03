@@ -17,3 +17,11 @@ export const scaledHeight = size => {
     const calHeight = heightPercentageToDP(`${ heightRatio}`); // (height*heightRatio)/100
     return calHeight;
 };
+
+export const getCustomStyle = (defaultStyle = {},propStyle={})=>{
+    return{
+      ...defaultStyle,
+      ...propStyle
+    };
+  };
+

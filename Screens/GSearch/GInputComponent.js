@@ -1,10 +1,10 @@
 import React from "react";
 import { View, TextInput, StyleSheet, Text, TouchableOpacity,Image } from "react-native";
 import PropTypes from "prop-types";
-import { scaledHeight,getCustomStyle } from '../Utils/Resolution';
-import { GIcon } from './GIcon';
-import Images from '../Images/ImageIndex';
-import gblStrings from '../Constants/GlobalStrings';
+import { scaledHeight,getCustomStyle } from './Utils';
+//import { GIcon } from './GIcon';
+//import Images from '../Images/ImageIndex';
+//import gblStrings from '../Constants/GlobalStrings';
 
 /* **************************\
   Function: GInputComponent
@@ -95,9 +95,9 @@ export const GInputComponent = (props) => {
 return(
   <>
     <View style={errorFlag ? getCustomStyle(styles.inputBoxErrViewStyle, propInputStyle) : getCustomStyle(styles.inputBoxStyle, propInputStyle)}
-        accessible={gblStrings.isIOSPlatform ? false : accessible}
+       // accessible={gblStrings.isIOSPlatform ? false : accessible}
         accessibilityLabel={accessibilityLabel}
-        accessibilityHint={secureTextEntry ? gblStrings.accessibleStrings.common.securetextfield : gblStrings.accessibleStrings.common.textfield}
+       // accessibilityHint={secureTextEntry ? gblStrings.accessibleStrings.common.securetextfield : gblStrings.accessibleStrings.common.textfield}
     >
       <TextInput
         ref={inputref}
@@ -124,8 +124,8 @@ return(
         selectionColor={selectionColor}
         underlineColorAndroid={underlineColorAndroid}
         autoCapitalize={autoCapitalize}
-        importantForAccessibility={gblStrings.isIOSPlatform ? "yes" : "no"}
-        accessible={!!gblStrings.isIOSPlatform}
+        importantForAccessibility="yes"
+        //accessible={!!gblStrings.isIOSPlatform}
         accessibilityLabel={accessibilityLabel}
       />
       
@@ -151,7 +151,7 @@ return(
           <Image style={styles.logoPasswordStyle} source={Images.onlineIdpassword} />  
         ):null}   
         {loginPassword ? (        
-          <TouchableOpacity style={styles.logoStyleEye} onPress={passwordToggle} accessibilityRole="button" accessibilityLabel={secureTextEntry ? gblStrings.accessibleStrings.login.showpassword : gblStrings.accessibleStrings.login.hidepassword}>        
+          <TouchableOpacity style={styles.logoStyleEye} onPress={passwordToggle} accessibilityRole="button">        
             <GIcon
               name="eye"
               type="simple-line-icon"
